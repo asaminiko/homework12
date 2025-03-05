@@ -16,11 +16,12 @@ myAdd.addEventListener('click', function () {
   removeElement = document.createElement('button') //створення кнопки "Видалити"
   removeElement.classList.add('remove')
   removeElement.textContent = 'Видалити'
+  removeElement.id = 'remove'
 
   changeElement = document.createElement('button') //створення кнопки "Змінити"
   changeElement.classList.add('change')
   changeElement.textContent = 'Змінити'
-
+  changeElement.id = 'change'
   list.appendChild(liElement)
   liElement.appendChild(removeElement)
   liElement.appendChild(changeElement)
@@ -29,11 +30,11 @@ myAdd.addEventListener('click', function () {
 
 list.addEventListener('click', (event) => {
   let element = event.target.parentElement
-  if (event.target.textContent === 'Видалити') {
+  if (event.target.id === 'remove') {
     event.target.parentElement.remove() //видалення завдання
   } else if (
     !list.querySelector('input') && // перевірка чи є інші input в list
-    event.target.textContent === 'Змінити'
+    event.target.id === 'change'
   ) {
     event.target.remove() //видалення кнопки "Змінити"
 
@@ -44,10 +45,10 @@ list.addEventListener('click', (event) => {
     okBtn = document.createElement('button') //створення кнопки є 'OK', щоб зберегти зміни
     okBtn.classList.add('okBtn')
     okBtn.textContent = 'OK'
-
+    okBtn.id = 'save'
     element.appendChild(inputChange)
     element.appendChild(okBtn)
-  } else if (event.target.textContent === 'OK') {
+  } else if (event.target.id === 'save') {
     //перевірка на пусту строку
     if (inputChange.value.trim() !== '') {
       element.firstChild.textContent = inputChange.value
@@ -56,7 +57,7 @@ list.addEventListener('click', (event) => {
     changeElement = document.createElement('button') // створення кнопки 'Змінити'
     changeElement.textContent = 'Змінити'
     changeElement.classList.add('change')
-
+    changeElement.id = 'change'
     element.appendChild(changeElement)
     //Видалення input та кнопку "ОК"
     inputChange.remove()
