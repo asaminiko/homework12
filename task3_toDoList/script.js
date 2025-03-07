@@ -30,11 +30,11 @@ myAdd.addEventListener('click', function () {
 
 list.addEventListener('click', (event) => {
   let element = event.target.parentElement
-  if (event.target.id === 'remove') {
+  if (event.target.id === removeElement.id) {
     event.target.parentElement.remove() //видалення завдання
   } else if (
     !list.querySelector('input') && // перевірка чи є інші input в list
-    event.target.id === 'change'
+    event.target.id === changeElement.id
   ) {
     event.target.remove() //видалення кнопки "Змінити"
 
@@ -48,7 +48,7 @@ list.addEventListener('click', (event) => {
     okBtn.id = 'save'
     element.appendChild(inputChange)
     element.appendChild(okBtn)
-  } else if (event.target.id === 'save') {
+  } else if (event.target.id === okBtn.id) {
     //перевірка на пусту строку
     if (inputChange.value.trim() !== '') {
       element.firstChild.textContent = inputChange.value
